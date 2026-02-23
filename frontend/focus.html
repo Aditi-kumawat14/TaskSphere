@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Focus Planner | TaskFlow</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/focus.css">
+
+    <script defer src="js/focus.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-circle">TF</div>
+        </div>
+
+        <ul class="menu">
+            <li onclick="go('dashboard.html')">
+                <i data-lucide="layout-dashboard"></i>
+                <span class="text">Dashboard</span>
+            </li>
+
+            <li onclick="go('tasks.html')">
+                <i data-lucide="clipboard-list"></i>
+                <span class="text">All Tasks</span>
+            </li>
+
+            <li class="active">
+                <i data-lucide="calendar-days"></i>
+                <span class="text">Focus Planner</span>
+            </li>
+
+            <li onclick="go('insights.html')">
+                <i data-lucide="bar-chart-2"></i>
+                <span class="text">Insights</span>
+            </li>
+
+            <li onclick="go('profile.html')">
+                <i data-lucide="user"></i>
+                <span class="text">Profile</span>
+            </li>
+        </ul>
+
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <header class="topbar">
+            <h2>Task Manager</h2>
+            <div>Hello, Aditi</div>
+        </header>
+
+        <div class="content">
+
+            <h1>Focus Planner</h1>
+
+            <div class="focus-container">
+
+                <!-- LEFT COLUMN -->
+                <div class="left-column">
+
+                    <!-- CALENDAR -->
+                    <div class="calendar-card">
+                        <div class="calendar-header">
+                            <button id="prevMonthBtn">←</button>
+                            <h3 id="focusMonthYear"></h3>
+                            <button id="nextMonthBtn">→</button>
+                        </div>
+
+                        <div class="calendar-days">
+                            <span>Sun</span>
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                        </div>
+
+                        <div id="focusCalendarDates" class="calendar-dates"></div>
+                    </div>
+
+                    <!-- SECONDARY TASKS -->
+                    <div class="focus-card">
+                        <h3>📌 Secondary Tasks</h3>
+                        <div id="secondaryTasksList"></div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="right-column">
+
+                    <!-- MAIN FOCUS -->
+                    <div class="focus-card main-focus-card">
+                        <h3>🔥 Main Focus</h3>
+                        <div id="mainFocusTask"></div>
+                    </div>
+
+                    <!-- DAILY NOTE -->
+                    <div class="focus-card">
+                        <h3>📝 Daily Note</h3>
+
+                        <!-- Notes will stack here -->
+                        <div class="saved-note-preview"></div>
+
+                        <textarea id="dailyNoteInput"
+                            placeholder="Write your focus for this day..."></textarea>
+
+                        <button id="saveNoteBtn" class="save-btn">
+                            Save Note
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+});
+
+function go(page){
+    window.location.href = page;
+}
+</script>
+
+</body>
+</html>

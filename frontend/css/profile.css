@@ -1,0 +1,456 @@
+/* Background */
+.content{
+    background: linear-gradient(135deg,#f4f3fb,#e9e8f6);
+    padding-bottom:50px;
+}
+
+/* GRID */
+.profile-container{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:25px;
+    margin-top:25px;
+}
+
+/* Make row 2 layout */
+.profile-container > :nth-child(4){
+    grid-column: span 1;
+}
+
+.profile-container > :nth-child(5){
+    grid-column: span 2;
+}
+
+/* GLASS CARD */
+.glass-card{
+    background:white;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.25s;
+    
+}
+
+.glass-card:hover{
+    transform:translateY(-3px);
+}
+
+/* Reduce first row card height */
+.profile-card{
+    padding:20px;
+    margin-left: 10px;
+}
+
+/* PROFILE LEFT */
+.profile-left{
+    display:flex;
+    align-items:center;
+    gap:28px;   /* increase space between avatar & content */
+}
+
+/* Shift name + email + buttons right */
+.profile-left > div{
+    margin-left: 10px;   /* small push right */
+}
+
+.avatar-img{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background: linear-gradient(135deg,#8475BD,#6c5ce7);
+    color:white;
+    font-size:28px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 18px rgba(132,117,189,0.3);
+}
+
+
+
+/* ================= PROFILE BUTTON COLUMN ================= */
+
+.profile-buttons{
+    margin-top:14px;
+    display:flex;
+    flex-direction:column;   /* vertical */
+    gap:12px;
+    width:220px; 
+  
+               
+}
+
+
+.profile-buttons button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    height:40px;
+    font-size:14px;
+    border-radius:14px;
+    width:100%;
+}
+
+
+
+/* Logout style */
+.btn-logout-profile{
+    background:#fceaea;
+    color:#c94545;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.btn-logout-profile:hover{
+    background:#f8d4d4;
+}
+
+.btn-purple{
+    background:#8475BD;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.btn-soft{
+    background:#f1effa;
+    border:none;
+    padding:8px 16px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+/* Info rows */
+.info-item,
+.toggle-item{
+    display:grid;
+    grid-template-columns: auto 1fr auto;
+    align-items:center;
+    gap:14px;
+    margin:15px 0;
+}
+
+.icon-badge{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.purple{ background:#f1effa; color:#8475BD; }
+.green{ background:#e8f8f0; color:#27ae60; }
+.orange{ background:#fff3e6; color:#f39c12; }
+
+.info-item strong{
+    font-weight:600;
+}
+
+/* Danger */
+.danger-card{
+    border:1px solid rgba(224,87,87,0.4);
+    background:#fff5f5;
+}
+
+.btn-del{
+    background:#e05555;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:14px;
+    margin-top:15px;
+    cursor:pointer;
+}
+
+/* Toggle */
+.switch{
+    position:relative;
+    width:44px;
+    height:22px;
+}
+
+.switch input{display:none;}
+
+.slider{
+    position:absolute;
+    background:#ddd;
+    border-radius:34px;
+    inset:0;
+}
+
+.slider:before{
+    content:"";
+    position:absolute;
+    height:16px;
+    width:16px;
+    left:3px;
+    bottom:3px;
+    background:white;
+    border-radius:50%;
+    transition:.3s;
+}
+
+.switch input:checked + .slider{
+    background:#8475BD;
+}
+
+.switch input:checked + .slider:before{
+    transform:translateX(20px);
+}
+
+/* Profile Logout Button */
+.btn-logout-profile{
+    background:#fceaea;
+    color:#c94545;
+    border:none;
+    padding:8px 16px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.btn-logout-profile:hover{
+    background:#f8d4d4;
+}
+
+/* Responsive */
+@media(max-width:1000px){
+    .profile-container{
+        grid-template-columns:1fr;
+    }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px){
+
+    .profile-container{
+        grid-template-columns: 1fr;   /* Single column */
+        gap:20px;
+    }
+
+    /* Reset special grid spans */
+    .profile-container > *{
+        grid-column: span 1 !important;
+    }
+
+    .glass-card{
+        padding:20px;
+    }
+
+    .profile-left{
+        flex-direction: column;
+        align-items: flex-start;
+        gap:15px;
+    }
+
+    .profile-buttons{
+        flex-direction: column;
+        width:100%;
+    }
+
+    .profile-buttons button{
+        width:100%;
+    }
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode {
+    background: #1e1f2b;
+}
+
+body.dark-mode .content{
+    background: linear-gradient(135deg,#1f2130,#252738);
+}
+
+body.dark-mode .glass-card{
+    background: #2a2d3f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .topbar{
+    background:#232537;
+    color:white;
+}
+
+body.dark-mode .sidebar{
+    background: linear-gradient(180deg,#2b2e45,#1f2130);
+}
+
+body.dark-mode .btn-soft{
+    background:#3a3d55;
+    color:white;
+}
+
+body.dark-mode .btn-logout-profile{
+    background:#3a2b2b;
+    color:#ff8b8b;
+}
+
+body.dark-mode .danger-card{
+    background:#3a2a2a;
+    border-color:#7a3a3a;
+}
+
+body.dark-mode .content h1{
+    color: white;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal-content{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:350px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.modal-content input{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-size:14px;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+/* ===== MODAL ===== */
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* higher to avoid sidebar overlap */
+}
+
+/* hide modal */
+.hidden{
+    display: none;
+}
+
+/* ===== MODAL BOX ===== */
+.modal-box{
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 22px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+    animation: fadeIn 0.2s ease;
+}
+
+/* animation */
+@keyframes fadeIn{
+    from{
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== BUTTON ROW ===== */
+.modal-box{
+    background: #ffffff;
+    padding: 40px 40px 35px 40px;   
+    border-radius: 22px;
+    width: 420px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+}
+
+/* Button row */
+.modal-actions{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    width: 100%;              
+}
+
+/* Equal buttons */
+.modal-actions button{
+    width: 170px;
+    height: 48px;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* cancel */
+.modal-actions .btn-soft{
+    background: #e9e7f3;
+    color: #333;
+}
+
+.modal-actions .btn-soft:hover{
+    background: #dcd9ec;
+}
+
+/* delete */
+.modal-actions .btn-danger{
+    background: #e05555;
+    color: white;
+   
+}
+
+.modal-actions .btn-danger:hover{
+    background: #c94545;
+}
+
+.modal-box h3{
+    margin-bottom: 10px;
+}
+
+.modal-box p{
+    margin-top: 8px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.btn-danger {
+    background: #e05555;
+    color: white;
+    margin-top: 0;
+}

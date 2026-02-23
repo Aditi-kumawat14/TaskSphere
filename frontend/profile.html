@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile | TaskFlow</title>
+
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/profile.css">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script defer src="js/profile.js"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+<!-- SIDEBAR (EXACT SAME STRUCTURE AS TASKS PAGE) -->
+<aside class="sidebar">
+
+    <div class="sidebar-logo">
+        <div class="logo-circle">TF</div>
+    </div>
+
+    <ul class="menu">
+        <li onclick="go('dashboard.html')">
+            <i data-lucide="layout-dashboard"></i>
+            <span class="text">Dashboard</span>
+        </li>
+
+        <li onclick="go('tasks.html')">
+            <i data-lucide="clipboard-list"></i>
+            <span class="text">All Tasks</span>
+        </li>
+
+        <li onclick="go('focus.html')">
+            <i data-lucide="calendar-days"></i>
+            <span class="text">Focus Planner</span>
+        </li>
+
+        <li onclick="go('insights.html')">
+            <i data-lucide="bar-chart-2"></i>
+            <span class="text">Insights</span>
+        </li>
+
+        <li class="active">
+            <i data-lucide="user"></i>
+            <span class="text">Profile</span>
+        </li>
+    </ul>
+
+    
+</aside>
+
+<div class="main">
+
+<header class="topbar">
+    <h2>Task Manager</h2>
+    <div>Hello, <span id="topProfileName">Aditi</span></div>
+</header>
+
+<div class="content">
+<h1>My Profile</h1>
+
+<div class="profile-container">
+
+    <!-- ROW 1 -->
+    <div class="glass-card profile-card">
+        <div class="profile-left">
+            <div class="avatar-img" id="profileAvatar">AS</div>
+
+            <div>
+                <h3 id="profileName">Aditi Sharma</h3>
+                <p id="profileEmail">aditi@example.com</p>
+
+                <div class="profile-buttons">
+
+                    <button class="btn-purple" id="editProfileBtn">
+                        <i data-lucide="edit-2"></i> Edit Profile
+                    </button>
+
+                    <button class="btn-soft" id="changePasswordBtn">
+                        <i data-lucide="lock"></i> Change Password
+                    </button>
+
+                    <button class="btn-logout-profile" id="profileLogoutBtn">
+                        <i data-lucide="log-out"></i> Logout
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <h3>Your Activity</h3>
+
+        <div class="info-item">
+            <div class="icon-badge purple"><i data-lucide="clipboard"></i></div>
+            <span>Tasks Created</span>
+            <strong id="tasksCreated"></strong>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-badge green"><i data-lucide="check-circle"></i></div>
+            <span>Completed</span>
+            <strong id="tasksCompleted"></strong>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-badge orange"><i data-lucide="flame"></i></div>
+            <span>Current Streak</span>
+            <strong id="currentStreak"> Days</strong>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-badge purple"><i data-lucide="calendar"></i></div>
+            <span>Joined</span>
+            <strong id="joinedDate"></strong>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <h3>Security</h3>
+
+        <div class="info-item">
+            <div class="icon-badge purple"><i data-lucide="key"></i></div>
+            <span>Last Login</span>
+            <strong id="lastLogin"></strong>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-badge purple"><i data-lucide="shield"></i></div>
+            <span>Password Changed</span>
+            <strong id="passwordChanged">-</strong>
+        </div>
+
+        <div class="info-item">
+            <div class="icon-badge purple"><i data-lucide="monitor"></i></div>
+            <span>Active Sessions</span>
+            <strong>1</strong>
+        </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="glass-card">
+        <h3>App Preferences</h3>
+
+        <div class="toggle-item">
+    <div class="icon-badge purple">
+        <i data-lucide="moon"></i>
+    </div>
+    <span>Dark Mode</span>
+
+    <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+    </label>
+</div>
+
+        <div class="toggle-item">
+            <div class="icon-badge purple"><i data-lucide="mail"></i></div>
+            <span>Email Notifications</span>
+            <label class="switch">
+                <input type="checkbox" id="emailNotificationToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="glass-card danger-card">
+        <h3>Danger Zone</h3>
+        <p>Permanently remove your account and all associated data.</p>
+
+        <button class="btn-del">
+            <i data-lucide="trash-2"></i> Delete Account
+        </button>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- EDIT PROFILE MODAL -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <h3>Edit Profile</h3>
+
+    <input type="text" id="editNameInput" placeholder="Full Name" />
+
+    <div class="modal-actions">
+      <button class="btn-soft" id="cancelEdit">Cancel</button>
+      <button class="btn-purple" id="saveEdit">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PASSWORD MODAL -->
+<div class="modal" id="passwordModal">
+  <div class="modal-content">
+    <h3>Change Password</h3>
+
+    <input type="password" id="oldPasswordInput" placeholder="Old Password" />
+    <input type="password" id="newPasswordInput" placeholder="New Password" />
+
+    <div class="modal-actions">
+      <button class="btn-soft" id="cancelPassword">Cancel</button>
+      <button class="btn-purple" id="savePassword">Change</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- DELETE CONFIRM MODAL -->
+<div id="deleteModal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <h3>Confirm Delete</h3>
+        <p>Are you sure you want to permanently delete your account?</p>
+
+        <div class="modal-actions">
+            <button id="cancelDelete" class="btn-soft">Cancel</button>
+            <button id="confirmDelete" class="btn-danger">Yes, Delete</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+lucide.createIcons();
+function go(p){window.location.href=p;}
+
+</script>
+
+</body>
+</html>

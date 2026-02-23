@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | TaskFlow</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script defer src="js/dashboard.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-circle">TF</div>
+        </div>
+
+        <ul class="menu">
+
+    <li class="active">
+        <i data-lucide="layout-dashboard"></i>
+        <span class="text">Dashboard</span>
+    </li>
+
+    <li onclick="go('tasks.html')">
+        <i data-lucide="clipboard-list"></i>
+        <span class="text">All Tasks</span>
+    </li>
+
+    <li onclick="go('focus.html')">
+        <i data-lucide="calendar-days"></i>
+        <span class="text">Focus Planner</span>
+    </li>
+
+    <li onclick="go('insights.html')">
+        <i data-lucide="bar-chart-2"></i>
+        <span class="text">Insights</span>
+    </li>
+
+    <li onclick="go('profile.html')">
+        <i data-lucide="user"></i>
+        <span class="text">Profile</span>
+    </li>
+
+</ul>
+
+
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <header class="topbar">
+            <h2>Task Manager</h2>
+            <div class="user-info">
+                Hello, <span id="userName">Aditi</span>
+            </div>
+        </header>
+
+        <div class="content">
+
+            <h1>Dashboard</h1>
+
+            <!-- STATS -->
+            <div class="stats">
+
+            <div class="card">
+                <div class="card-info">
+                    <h2 id="totalTasks">42</h2>
+                    <p>Total Tasks</p>
+                </div>
+                <div class="card-icon">
+                    <i data-lucide="layers"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <h2 id="todayTasks">10</h2>
+                    <p>Tasks Today</p>
+                </div>
+                <div class="card-icon">
+                    <i data-lucide="calendar"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <h2 id="pendingTasks">15</h2>
+                    <p>Pending Tasks</p>
+                </div>
+                <div class="card-icon">
+                    <i data-lucide="clock"></i>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-info">
+                    <h2 id="completedTasks">27</h2>
+                    <p>Completed Tasks</p>
+                </div>
+                <div class="card-icon">
+                    <i data-lucide="check-circle"></i>
+                </div>
+            </div>
+
+        </div>
+
+
+            <!-- RECENT -->
+            <div class="recent" >
+                <h2>Recent Activity</h2>
+                <div id="recentList">
+                    <div class="recent-item">
+                        <strong>Meeting design review</strong>
+                        <span>4 hours ago</span>
+                    </div>
+
+                    <div class="recent-item">
+                        <strong>Write weekly report</strong>
+                        <span>8 hours ago</span>
+                    </div>
+
+                    <div class="recent-item">
+                        <strong>Grocery shopping</strong>
+                        <span>10 hours ago</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    lucide.createIcons();
+    function go(page) {
+        window.location.href = page;
+    }
+
+</script>
+
+</body>
+</html>

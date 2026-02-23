@@ -1,0 +1,299 @@
+/* ================= FOCUS PLANNER ================= */
+
+.focus-container {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 25px;
+    align-items: start;
+}
+
+/* LEFT & RIGHT COLUMNS */
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CALENDAR CARD */
+.calendar-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+/* CALENDAR HEADER */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header button {
+    border: none;
+    background: #f1effa;
+    color: #5b4db1;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* DAYS */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+/* DATES */
+.calendar-dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-dates div {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.calendar-dates div:not(.active):hover {
+    background: #f3f2fb;
+}
+
+.calendar-dates .active {
+    background: #8475BD;
+    color: white;
+}
+
+/* FOCUS CARDS */
+.focus-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.main-focus-card {
+    border-left: 6px solid #8475BD;
+}
+
+.focus-card h3 {
+    margin-bottom: 15px;
+}
+
+/* TASK ITEM */
+.focus-task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.focus-task-item:last-child {
+    border-bottom: none;
+}
+
+/* NOTE */
+#dailyNoteInput {
+    width: 100%;
+    height: 90px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+/* BUTTON */
+.save-btn {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #8475BD;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.save-btn:hover {
+    background: #6f60a8;
+}
+
+/* SET FOCUS BUTTON */
+.focus-btn  {
+    background: #f1effa;
+    color: #5b4db1;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+
+
+.focus-btn:hover {
+    background: #8475BD;
+    color: white;
+}
+
+/* REMOVE BUTTON */
+.remove-btn {
+    background: #fdecec;
+    color: #d9534f;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.remove-btn:hover {
+    background: #d9534f;
+    color: white;
+}
+
+/* SAVED NOTE PREVIEW */
+.saved-note-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;   /* 👈 cleaner spacing */
+    margin-bottom: 10px;
+}
+
+.note-box {
+    background: #f3f2fb;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    color: #444;
+    border-left: 4px solid #8475BD;
+
+    margin-bottom: 3px;   
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .focus-container {
+        grid-template-columns: 1fr;   /* 👈 Make single column */
+    }
+
+    .left-column,
+    .right-column {
+        width: 100%;
+    }
+
+    .save-btn {
+        width: 100%;  /* Full width button on mobile */
+    }
+
+    .calendar-header h3 {
+        font-size: 16px;
+    }
+
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode {
+    background: #1e1f2b;
+}
+
+/* Content */
+body.dark-mode .content {
+    background: linear-gradient(135deg,#1f2130,#252738);
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+    background: linear-gradient(180deg,#2b2e45,#1f2130);
+}
+
+/* Topbar */
+body.dark-mode .topbar {
+    background: #232537;
+    color: white;
+}
+
+/* Headings */
+body.dark-mode .content h1 {
+    color: white;
+}
+
+/* Calendar card */
+body.dark-mode .calendar-card {
+    background: #2a2d3f;
+    color: #f1f1f1;
+}
+
+/* Calendar days */
+body.dark-mode .calendar-days {
+    color: #aaa;
+}
+
+/* Calendar hover */
+body.dark-mode .calendar-dates div:not(.active):hover {
+    background: #3a3d55;
+}
+
+/* Focus cards */
+body.dark-mode .focus-card {
+    background: #2a2d3f;
+    color: #f1f1f1;
+}
+
+/* Task item borders */
+body.dark-mode .focus-task-item {
+    border-bottom: 1px solid #3a3d55;
+}
+
+/* Note box */
+body.dark-mode .note-box {
+    background: #3a3d55;
+    color: #f1f1f1;
+}
+
+/* Textarea */
+body.dark-mode #dailyNoteInput {
+    background: #3a3d55;
+    border: 1px solid #444;
+    color: white;
+}
+
+/* Calendar nav buttons */
+body.dark-mode .calendar-header button {
+    background: #3a3d55;
+    color: white;
+}
+
+/* Focus button */
+body.dark-mode .focus-btn {
+    background: #3a3d55;
+    color: white;
+}
+
+body.dark-mode .focus-btn:hover {
+    background: #8475BD;
+}
+
+/* Remove button */
+body.dark-mode .remove-btn {
+    background: #3a2b2b;
+    color: #ff8b8b;
+}

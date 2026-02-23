@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tasks | TaskFlow</title>
+
+    <!-- SAME THEME -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tasks.css">
+
+    <script defer src="js/tasks.js"></script>
+
+    <!-- ICONS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-circle">TF</div>
+        </div>
+
+        <ul class="menu">
+            <li onclick="go('dashboard.html')">
+                <i data-lucide="layout-dashboard"></i>
+                <span class="text">Dashboard</span>
+            </li>
+
+            <li class="active">
+                <i data-lucide="clipboard-list"></i>
+                <span class="text">All Tasks</span>
+            </li>
+
+            <li onclick="go('focus.html')">
+                <i data-lucide="calendar-days"></i>
+                <span class="text">Focus Planner</span>
+            </li>
+
+            <li onclick="go('insights.html')">
+                <i data-lucide="bar-chart-2"></i>
+                <span class="text">Insights</span>
+            </li>
+
+            <li onclick="go('profile.html')">
+                <i data-lucide="user"></i>
+                <span class="text">Profile</span>
+            </li>
+        </ul>
+
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <div class="main">
+
+        <header class="topbar">
+            <h2>Task Manager</h2>
+            <div>Hello, Aditi</div>
+        </header>
+
+        <div class="content">
+
+            <!-- HEADER -->
+            <div class="page-header">
+                <h1>All Tasks</h1>
+                <button class="add-btn" id="addTaskBtn">
+                    <i data-lucide="plus"></i> Add Task
+                </button>
+            </div>
+
+            <!-- FILTER BAR -->
+            <div class="task-controls">
+
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                </div>
+
+                <div class="filters">
+                    <button class="filter active" data-filter="all">All</button>
+                    <button class="filter" data-filter="pending">Pending</button>
+                    <button class="filter" data-filter="completed">Completed</button>
+                </div>
+
+            </div>
+
+            <!-- TABLE -->
+            <div class="task-table">
+
+                <div class="table-header">
+                    <span></span>
+                    <span>TASK</span>
+                    <span>CATEGORY</span>
+                    <span>DUE DATE</span>
+                    <span>ACTION</span>
+                </div>
+
+                <!-- TASK LIST -->
+                <div id="taskList"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= ADD / EDIT TASK MODAL ================= -->
+<div id="taskModal" class="modal">
+
+    <div class="modal-content">
+
+        <!-- 🔥 This will change dynamically -->
+        <h2 id="modalTitle">Add Task</h2>
+
+        <input type="text" id="taskTitle" placeholder="Title">
+        <input type="text" id="taskDesc" placeholder="Description">
+        <input type="text" id="taskCategory" placeholder="Category">
+        <input type="date" id="taskDate">
+
+        <div class="modal-actions">
+            <button class="save-btn" id="saveTaskBtn">Save</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+// Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+});
+
+function go(page){
+    window.location.href = page;
+}
+</script>
+
+</body>
+</html>

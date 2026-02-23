@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container" id="container">
+
+    <!-- IMAGE PANEL -->
+    <div class="image-panel">
+        <img src="../images/task_boy.jpg" id="authImage" alt="Auth Image">
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="form-box login">
+        <h2>Login</h2>
+
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+
+        <button type="button" id="loginBtn">Login</button>
+
+        <p>
+            Don't have an account?
+            <span class="switch">Register</span>
+        </p>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div class="form-box register">
+        <h2>Register</h2>
+
+        <input type="text" id="registerName" placeholder="Full Name">
+        <input type="email" id="registerEmail" placeholder="Email">
+        <input type="password" id="registerPassword" placeholder="Password">
+
+        <button type="button" id="registerBtn">Create Account</button>
+
+        <p>
+            Already have an account?
+            <span class="switch">Login</span>
+        </p>
+    </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+</body>
+</html>

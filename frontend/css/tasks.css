@@ -1,0 +1,297 @@
+/* ================= HEADER ================= */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    color: #4a4a6a;
+}
+
+/* ================= BUTTON ================= */
+.add-btn {
+    background: linear-gradient(135deg, #8475BD, #6d5fc1);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+/* ================= CONTROLS ================= */
+.task-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    background: #f4f5fb;
+    padding: 12px 15px;
+    border-radius: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+/* ================= FILTER ================= */
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: #e8e9f8;
+    cursor: pointer;
+}
+
+.filter.active {
+    background: #8475BD;
+    color: white;
+}
+
+/* ================= TABLE ================= */
+.task-table {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 40px 2fr 1fr 1fr 1fr;
+    color: #888;
+    font-size: 14px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 40px 2fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* TEXT */
+.table-row strong {
+    font-weight: 500;
+}
+
+.table-row small {
+    color: #999;
+}
+
+/* BADGE */
+.badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.badge.pending {
+    background: #f3d9b1;
+    color: #9b6b2e;
+}
+
+.badge.completed {
+    background: #cde7d8;
+    color: #2f6b4f;
+}
+
+/* ACTION BUTTON */
+.table-row button {
+    border: none;
+    background: #f1f2fb;
+    padding: 8px;
+    border-radius: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* ================= MODAL ================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: #4a4a6a;
+}
+
+/* INPUTS */
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.modal-content input:focus {
+    border-color: #8475BD;
+    box-shadow: 0 0 6px rgba(132,117,189,0.3);
+}
+
+/* BUTTONS */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #8475BD, #6d5fc1);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: #e8e9f8;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode {
+    background: #1e1f2b;
+}
+
+/* Content background */
+body.dark-mode .content {
+    background: linear-gradient(135deg,#1f2130,#252738);
+}
+
+/* Sidebar */
+body.dark-mode .sidebar {
+    background: linear-gradient(180deg,#2b2e45,#1f2130);
+}
+
+/* Topbar */
+body.dark-mode .topbar {
+    background: #232537;
+    color: white;
+}
+
+/* Page heading */
+body.dark-mode .page-header h1 {
+    color: white;
+}
+
+/* Search box */
+body.dark-mode .search-box {
+    background: #2a2d3f;
+}
+
+body.dark-mode .search-box input {
+    color: white;
+}
+
+/* Filters */
+body.dark-mode .filter {
+    background: #3a3d55;
+    color: white;
+}
+
+body.dark-mode .filter.active {
+    background: #8475BD;
+    color: white;
+}
+
+/* Table */
+body.dark-mode .task-table {
+    background: #2a2d3f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .table-header {
+    color: #aaa;
+    border-bottom: 1px solid #3a3d55;
+}
+
+body.dark-mode .table-row {
+    border-bottom: 1px solid #3a3d55;
+}
+
+body.dark-mode .table-row small {
+    color: #bbb;
+}
+
+/* Action buttons */
+body.dark-mode .table-row button {
+    background: #3a3d55;
+    color: white;
+}
+
+/* Modal */
+body.dark-mode .modal-content {
+    background: #2a2d3f;
+    color: white;
+}
+
+body.dark-mode .modal-content h2 {
+    color: white;
+}
+
+body.dark-mode .modal-content input {
+    background: #3a3d55;
+    border: 1px solid #444;
+    color: white;
+}
+
+body.dark-mode .cancel-btn {
+    background: #3a3d55;
+    color: white;
+}

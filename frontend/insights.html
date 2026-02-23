@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insights | TaskFlow</title>
+
+    <!-- SAME THEME -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/insights.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script defer src="js/insights.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-circle">TF</div>
+        </div>
+
+        <ul class="menu">
+            <li onclick="go('dashboard.html')">
+                <i data-lucide="layout-dashboard"></i>
+                <span class="text">Dashboard</span>
+            </li>
+
+            <li onclick="go('tasks.html')">
+                <i data-lucide="clipboard-list"></i>
+                <span class="text">All Tasks</span>
+            </li>
+
+            <li onclick="go('focus.html')">
+                <i data-lucide="calendar-days"></i>
+                <span class="text">Focus Planner</span>
+            </li>
+
+            <li class="active">
+                <i data-lucide="bar-chart-2"></i>
+                <span class="text">Insights</span>
+            </li>
+
+            <li onclick="go('profile.html')">
+                <i data-lucide="user"></i>
+                <span class="text">Profile</span>
+            </li>
+        </ul>
+
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <header class="topbar">
+            <h2>Task Manager</h2>
+            <div>Hello, Aditi</div>
+        </header>
+
+        <div class="content">
+
+            <h1>Productivity Analytics</h1>
+
+            <!-- ================= TOP STATS ================= -->
+            <div class="insight-stats">
+
+                <div class="insight-card">
+                    <h3 id="insightsTotalCompleted">0</h3>
+                    <p>Tasks Completed</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 id="insightsCompletionRate">0%</h3>
+                    <p>Completion Rate</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 id="insightsCurrentStreak">0</h3>
+                    <p>Current Streak</p>
+                </div>
+
+                <div class="insight-card">
+                    <h3 id="insightsBestDay">-</h3>
+                    <p>Most Productive Day</p>
+                </div>
+
+            </div>
+
+            <div class="chart-wrapper">
+
+                <!-- WEEKLY -->
+                <div class="chart-card">
+                    <h3>Weekly Activity</h3>
+                    <div class="chart-container">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- MONTHLY -->
+                <div class="chart-card">
+                    <h3>Monthly Progress</h3>
+                    <div class="chart-container">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+});
+
+function go(page){
+    window.location.href = page;
+}
+</script>
+
+</body>
+</html>
