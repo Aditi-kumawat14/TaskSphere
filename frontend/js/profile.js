@@ -26,7 +26,7 @@ notificationToggle.addEventListener("change", async function(){
 
     const token = localStorage.getItem("token");
 
-    await fetch("http://localhost:5000/api/profile/notifications", {
+    await fetch("https://tasksphere-backend-zrls.onrender.com", {
         method: "PUT",
         headers: {
             "Content-Type":"application/json",
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const profileRes = await fetch("http://localhost:5000/api/profile", {
+        const profileRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const taskRes = await fetch("http://localhost:5000/api/tasks", {
+        const taskRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const insightRes = await fetch("http://localhost:5000/api/tasks/insights", {
+        const insightRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     notificationToggle.addEventListener("change", async function(){
 
-        await fetch("http://localhost:5000/api/profile/notifications", {
+        await fetch("https://tasksphere-backend-zrls.onrender.com", {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json",
@@ -208,7 +208,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
 
     if(!newName) return;
 
-    await fetch("http://localhost:5000/api/profile", {
+    await fetch("https://tasksphere-backend-zrls.onrender.com", {
         method:"PUT",
         headers:{
             "Content-Type":"application/json",
@@ -229,7 +229,7 @@ document.getElementById("savePassword").addEventListener("click", async () => {
 
     if(!oldPassword || !newPassword) return;
 
-    const res = await fetch("http://localhost:5000/api/profile/password", {
+    const res = await fetch("https://tasksphere-backend-zrls.onrender.com", {
         method:"PUT",
         headers:{
             "Content-Type":"application/json",
@@ -266,7 +266,7 @@ confirmDelete.addEventListener("click", async () => {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:5000/api/profile", {
+    const res = await fetch("https://tasksphere-backend-zrls.onrender.com", {
         method: "DELETE",
         headers: {
             "Authorization": `Bearer ${token}`

@@ -16,7 +16,7 @@ const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 
 // Backend API
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://tasksphere-backend-zrls.onrender.com";
 
 
 // ==============================

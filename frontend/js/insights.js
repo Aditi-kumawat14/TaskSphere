@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/tasks";
+const API_URL = "https://tasksphere-backend-zrls.onrender.com";
 const token = localStorage.getItem("token");
 
 if (!token) {
