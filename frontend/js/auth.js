@@ -15,7 +15,7 @@ const registerName = document.getElementById("registerName");
 const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 
-// Backend API
+// ✅ Backend API
 const API_URL = "https://tasksphere-backend-zrls.onrender.com";
 
 
@@ -49,7 +49,8 @@ if (registerBtn) {
 
         try {
 
-            const response = await fetch(`${API_URL}/register`, {
+            // ✅ FIXED ROUTE
+            const response = await fetch(`${API_URL}/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -102,7 +103,8 @@ if (loginBtn) {
 
         try {
 
-            const response = await fetch(`${API_URL}/login`, {
+            // ✅ FIXED ROUTE
+            const response = await fetch(`${API_URL}/api/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -142,8 +144,6 @@ if (loginBtn) {
 // ==============================
 
 // ❌ DO NOT auto redirect here
-// It was causing your problem
-
 // const token = localStorage.getItem("token");
 // if (token) {
 //     window.location.href = "dashboard.html";
