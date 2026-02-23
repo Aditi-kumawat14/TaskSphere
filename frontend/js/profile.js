@@ -249,7 +249,7 @@ document.getElementById("profileLogoutBtn").addEventListener("click", () => {
     window.location.href = "index.html";
 });
 
-const deleteBtn = document.querySelector(".btn-danger");
+const deleteBtn = document.querySelector(".btn-del");
 const deleteModal = document.getElementById("deleteModal");
 const cancelDelete = document.getElementById("cancelDelete");
 const confirmDelete = document.getElementById("confirmDelete");
