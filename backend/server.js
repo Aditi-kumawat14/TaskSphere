@@ -5,10 +5,17 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors({
-    origin: "*",
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+const corsOptions = {
+    origin: [
+        "https://tasksphereproject.netlify.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
