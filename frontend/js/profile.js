@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function(){
+const BASE_URL = "https://tasksphere-backend-zrls.onrender.com";
+
+document.addEventListener("DOMContentLoaded", function(){ 
 
     const darkToggle = document.getElementById("darkModeToggle");
 
@@ -20,25 +22,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-const notificationToggle = document.getElementById("emailNotificationToggle");
-
-notificationToggle.addEventListener("change", async function(){
-
-    const token = localStorage.getItem("token");
-
-    await fetch("https://tasksphere-backend-zrls.onrender.com", {
-        method: "PUT",
-        headers: {
-            "Content-Type":"application/json",
-            "Authorization":`Bearer ${token}`
-        },
-        body: JSON.stringify({
-            enabled: this.checked
-        })
-    });
-
-});
-
 document.addEventListener("DOMContentLoaded", async function(){
 
     const token = localStorage.getItem("token");
@@ -52,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const profileRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
+        const profileRes = await fetch(`${BASE_URL}/api/profile`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -67,19 +50,18 @@ document.addEventListener("DOMContentLoaded", async function(){
         document.getElementById("emailNotificationToggle").checked =
         profileData.email_notifications === 1;
 
-        // Avatar initials
         const initials = profileData.full_name
             .split(" ")
             .map(n => n[0])
             .join("");
         document.getElementById("profileAvatar").innerText = initials;
 
-        // Joined Date
         if(profileData.created_at){
             const joined = new Date(profileData.created_at);
             document.getElementById("joinedDate").innerText =
                 joined.toLocaleString("default", { month: "short", year: "numeric" });
         }
+
         if(profileData.last_login){
             const loginDate = new Date(profileData.last_login);
             document.getElementById("lastLogin").innerText =
@@ -101,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const taskRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
+        const taskRes = await fetch(`${BASE_URL}/api/tasks`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -123,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
     try {
 
-        const insightRes = await fetch("https://tasksphere-backend-zrls.onrender.com", {
+        const insightRes = await fetch(`${BASE_URL}/api/tasks/dashboard`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -139,33 +121,13 @@ document.addEventListener("DOMContentLoaded", async function(){
     }
 
 
-    /* ================= DARK MODE ================= */
-
-    const darkToggle = document.getElementById("darkModeToggle");
-
-    if(localStorage.getItem("theme") === "dark"){
-        document.body.classList.add("dark-mode");
-        darkToggle.checked = true;
-    }
-
-    darkToggle.addEventListener("change", function(){
-        if(this.checked){
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("theme","dark");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("theme","light");
-        }
-    });
-
-
     /* ================= EMAIL NOTIFICATION ================= */
 
     const notificationToggle = document.getElementById("emailNotificationToggle");
 
     notificationToggle.addEventListener("change", async function(){
 
-        await fetch("https://tasksphere-backend-zrls.onrender.com", {
+        await fetch(`${BASE_URL}/api/profile/notifications`, {
             method: "PUT",
             headers: {
                 "Content-Type":"application/json",
@@ -181,6 +143,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 });
 
 
+/* ================= EDIT / PASSWORD ================= */
 
 const editModal = document.getElementById("editModal");
 const passwordModal = document.getElementById("passwordModal");
@@ -208,7 +171,7 @@ document.getElementById("saveEdit").addEventListener("click", async () => {
 
     if(!newName) return;
 
-    await fetch("https://tasksphere-backend-zrls.onrender.com", {
+    await fetch(`${BASE_URL}/api/profile`, {
         method:"PUT",
         headers:{
             "Content-Type":"application/json",
@@ -229,7 +192,7 @@ document.getElementById("savePassword").addEventListener("click", async () => {
 
     if(!oldPassword || !newPassword) return;
 
-    const res = await fetch("https://tasksphere-backend-zrls.onrender.com", {
+    const res = await fetch(`${BASE_URL}/api/profile/password`, {
         method:"PUT",
         headers:{
             "Content-Type":"application/json",
@@ -249,6 +212,9 @@ document.getElementById("profileLogoutBtn").addEventListener("click", () => {
     window.location.href = "index.html";
 });
 
+
+/* ================= DELETE ACCOUNT ================= */
+
 const deleteBtn = document.querySelector(".btn-del");
 const deleteModal = document.getElementById("deleteModal");
 const cancelDelete = document.getElementById("cancelDelete");
@@ -266,7 +232,7 @@ confirmDelete.addEventListener("click", async () => {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch("https://tasksphere-backend-zrls.onrender.com", {
+    const res = await fetch(`${BASE_URL}/api/profile`, {
         method: "DELETE",
         headers: {
             "Authorization": `Bearer ${token}`

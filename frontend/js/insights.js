@@ -1,4 +1,4 @@
-const API_URL = "https://tasksphere-backend-zrls.onrender.com";
+const API_URL = "https://tasksphere-backend-zrls.onrender.com/api/tasks";
 const token = localStorage.getItem("token");
 
 if (!token) {
@@ -11,7 +11,7 @@ async function loadInsights() {
 
     try {
 
-        const response = await fetch(`${API_URL}/insights`, {
+        const response = await fetch(`${API_URL}/dashboard`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
