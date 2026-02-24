@@ -11,25 +11,37 @@ async function loadInsights() {
 
     try {
 
-        const response = await fetch(`${API_URL}/dashboard`, {
+        // ✅ FIXED ROUTE (was /dashboard)
+        const response = await fetch(`${API_URL}/insights`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
         });
 
+        if (!response.ok) {
+            throw new Error("Failed to load insights");
+        }
+
         const data = await response.json();
 
-        // TOP CARDS
-        document.getElementById("insightsTotalCompleted").innerText = data.totalCompleted;
-        document.getElementById("insightsCompletionRate").innerText = data.completionRate + "%";
-        document.getElementById("insightsCurrentStreak").innerText = data.currentStreak;
-        document.getElementById("insightsBestDay").innerText = data.bestDay;
+        // ================= TOP CARDS =================
+        document.getElementById("insightsTotalCompleted").innerText =
+            data.totalCompleted ?? 0;
 
-        renderWeeklyChart(data.weeklyData);
-        renderMonthlyChart(data.monthlyData);
+        document.getElementById("insightsCompletionRate").innerText =
+            (data.completionRate ?? 0) + "%";
+
+        document.getElementById("insightsCurrentStreak").innerText =
+            data.currentStreak ?? 0;
+
+        document.getElementById("insightsBestDay").innerText =
+            data.bestDay ?? "-";
+
+        renderWeeklyChart(data.weeklyData || [0,0,0,0,0,0,0]);
+        renderMonthlyChart(data.monthlyData || { labels: [], values: [] });
 
     } catch (err) {
-        console.log(err);
+        console.log("Insights Error:", err);
     }
 }
 
@@ -120,11 +132,14 @@ function renderMonthlyChart(monthlyData) {
     });
 }
 
-// ================= DARK MODE LOAD =================
+/* ================= DARK MODE LOAD ================= */
+
 document.addEventListener("DOMContentLoaded", function () {
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-mode");
     }
 });
+
+/* ================= INIT ================= */
 
 loadInsights();
