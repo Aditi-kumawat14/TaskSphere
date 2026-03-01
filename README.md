@@ -1,6 +1,6 @@
 # TaskSphere 🚀
 
-🔗 Live Preview: [Click Here to View Project](https://your-live-link.com)
+🔗 Live Preview: (https://tasksphereproject.netlify.app/)
 
 ---
 
