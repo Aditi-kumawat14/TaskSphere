@@ -1,4 +1,6 @@
-const API_URL = "https://tasksphere-backend-zrls.onrender.com/api/tasks";
+// const API_URL = "https://tasksphere-backend-zrls.onrender.com/api/tasks"; // render
+const API_URL = "/api/tasks"; // AWS
+
 const token = localStorage.getItem("token");
 
 if (!token) {

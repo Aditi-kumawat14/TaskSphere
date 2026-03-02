@@ -16,7 +16,9 @@ const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 
 // ✅ Backend API
-const API_URL = "https://tasksphere-backend-zrls.onrender.com";
+//const API_URL = "https://tasksphere-backend-zrls.onrender.com";     ---for render
+
+const API_URL = "/api";   // for aws
 
 
 // ==============================
@@ -50,7 +52,9 @@ if (registerBtn) {
         try {
 
             // ✅ FIXED ROUTE
-            const response = await fetch(`${API_URL}/api/auth/register`, {
+            //const response = await fetch(`${API_URL}/api/auth/register`,    (render)
+            const response = await fetch(`${API_URL}/auth/register`,   //aws
+                {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -104,7 +108,9 @@ if (loginBtn) {
         try {
 
             // ✅ FIXED ROUTE
-            const response = await fetch(`${API_URL}/api/auth/login`, {
+            //const response = await fetch(`${API_URL}/api/auth/login`,   (render)
+            const response = await fetch(`${API_URL}/auth/login`,   //AWS
+            {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
