@@ -16,10 +16,9 @@ const registerEmail = document.getElementById("registerEmail");
 const registerPassword = document.getElementById("registerPassword");
 
 // ✅ Backend API
-//const API_URL = "https://tasksphere-backend-zrls.onrender.com";     ---for render
+const API_URL = "https://tasksphere-backend-zrls.onrender.com";     
 
-const API_URL = "http://44.248.224.250:5000/api";  // for aws
-
+//const API_URL = "http://44.248.224.250:5000/api";  
 
 // ==============================
 // SWITCH LOGIN / REGISTER UI
