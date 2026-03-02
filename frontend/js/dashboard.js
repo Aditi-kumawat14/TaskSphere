@@ -1,5 +1,5 @@
 //const API_URL = "https://tasksphere-backend-zrls.onrender.com/api/tasks/dashboard";   (render)
-const API_URL = "/api/tasks/dashboard";
+const API_URL = "http://44.248.224.250:5000/api/tasks/dashboard";
 
 const token = localStorage.getItem("token");
 

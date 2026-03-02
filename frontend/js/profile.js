@@ -1,5 +1,5 @@
 // const BASE_URL = "https://tasksphere-backend-zrls.onrender.com"; // render
-const BASE_URL = ""; // AWS (same origin)
+const BASE_URL = "http://44.248.224.250:5000"; // AWS (same origin)
 
 document.addEventListener("DOMContentLoaded", function(){ 
 
