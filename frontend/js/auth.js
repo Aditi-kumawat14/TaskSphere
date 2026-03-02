@@ -51,8 +51,8 @@ if (registerBtn) {
         try {
 
             // ✅ FIXED ROUTE
-            //const response = await fetch(`${API_URL}/api/auth/register`,    (render)
-            const response = await fetch(`${API_URL}/auth/register`,   //aws
+            const response = await fetch(`${API_URL}/api/auth/register`,   // (render)
+            //const response = await fetch(`${API_URL}/auth/register`,   //aws
                 {
                 method: "POST",
                 headers: {
@@ -107,8 +107,8 @@ if (loginBtn) {
         try {
 
             // ✅ FIXED ROUTE
-            //const response = await fetch(`${API_URL}/api/auth/login`,   (render)
-            const response = await fetch(`${API_URL}/auth/login`,   //AWS
+            const response = await fetch(`${API_URL}/api/auth/login`,  // (render)
+           // const response = await fetch(`${API_URL}/auth/login`,   //AWS
             {
                 method: "POST",
                 headers: {
